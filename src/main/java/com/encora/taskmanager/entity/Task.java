@@ -1,9 +1,6 @@
 package com.encora.taskmanager.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,4 +20,9 @@ public class Task {
     private String title;
     private String description;
     private boolean completed;
+
+    // Added the Many-to-One relationship to User
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "user_id") // This column will be created in the Task table
+    private User user;
 }

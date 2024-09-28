@@ -79,4 +79,10 @@ public class UserService {
             return "fail";
         }
     }
+
+    public User findById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    }
+
 }
